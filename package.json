@@ -1,0 +1,28 @@
+{
+  "name": "dw-openplatform-examples",
+  "private": true,
+  "scripts": {
+    "inject": "node ./scripts/index.js",
+    "example:workbench-screen": "npm run inject && cd ./examples/workbench-screen-demo && npm run dev",
+    "example:meta-api": "npm run inject && cd ./examples/meta-api-demo && npm run dev",
+    "example:event-instance-status": "npm run inject && cd ./examples/event-instance-status-demo && npm run dev",
+    "example:extension-maxpt": "npm run inject && cd ./examples/extension-maxpt-demo && npm run dev",
+    "build:workbench-screen": "npm run inject && cd ./examples/workbench-screen-demo && npm run build",
+    "build:meta-api": "npm run inject && cd ./examples/meta-api-demo && npm run build",
+    "build:event-instance-status": "npm run inject && cd ./examples/event-instance-status-demo && npm run build",
+    "build:extension-maxpt": "npm run inject && cd ./examples/extension-maxpt-demo && npm run build"
+  },
+  "engines": {
+    "node": ">=16.16.0",
+    "pnpm": ">=7"
+  },
+  "packageManager": "pnpm@7.1.2",
+  "resolutions": {
+    "@alifd/next": "1.25.51",
+    "typescript": "^4.6.4",
+    "vite": "^3.0.0"
+  },
+  "dependencies": {
+    "glob": "^8.0.3"
+  }
+}

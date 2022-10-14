@@ -1,0 +1,18 @@
+.app-wrapper {
+  width: 60%;
+  height: 100%;
+  margin: auto;
+  margin-top: 24px;
+}
+.app-wrapper .chart-container-wrapper {
+  width: 100%;
+}
+.app-wrapper .app-loading {
+  width: 100%;
+}
+.app-wrapper .app-card-title :global(.next-card-header-title) {
+  font-weight: bold !important;
+}
+.app-wrapper :global(.next-row):not(:first-of-type) {
+  margin-top: 12px;
+}

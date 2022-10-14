@@ -1,0 +1,13 @@
+{
+  "name": "workbench-screen-demo",
+  "private": true,
+  "scripts": {
+    "dev": "dw-openplatform-script dev",
+    "build": "dw-openplatform-script build --preview",
+    "clean": "dw-openplatform-script clean"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "dw-openplatform-script": "workspace:*"
+  }
+}

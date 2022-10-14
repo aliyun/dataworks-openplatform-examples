@@ -1,0 +1,18 @@
+# .editorconfig
+
+# http://editorconfig.org
+root = true
+
+# Unix-style newlines with a newline ending every file
+# https://stackoverflow.com/questions/729692/why-should-text-files-end-with-a-newline/729795#729795
+[*]
+indent_style = space
+indent_size = 2
+tab_width = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.md]
+trim_trailing_whitespace = false

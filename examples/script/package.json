@@ -1,0 +1,27 @@
+{
+  "name": "dw-openplatform-script",
+  "private": true,
+  "version": "0.1.0",
+  "bin": {
+    "dw-openplatform-script": "./bin/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf bin"
+  },
+  "files": [
+    "bin"
+  ],
+  "dependencies": {
+    "chalk": "*",
+    "commander": "*",
+    "fs-extra": "*",
+    "open": "*",
+    "xml2json": "*"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "*",
+    "@types/node": "*",
+    "typescript": "*"
+  }
+}

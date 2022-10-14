@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "outDir": "./bin",
+    "module": "commonjs",
+    "esModuleInterop": true
+  },
+  "include": ["src/**/*"]
+}
