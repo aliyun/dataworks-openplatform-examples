@@ -1,0 +1,24 @@
+{
+  "name": "frontend-demo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build"
+  },
+  "dependencies": {
+    "@alifd/next": "*",
+    "classnames": "*",
+    "moment": "*",
+    "react": "*",
+    "react-dom": "*",
+    "@antv/g2plot": "*"
+  },
+  "devDependencies": {
+    "@types/react": "*",
+    "@types/react-dom": "*",
+    "@vitejs/plugin-react": "*",
+    "typescript": "*",
+    "vite": "*"
+  }
+}

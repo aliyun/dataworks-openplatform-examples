@@ -1,0 +1,14 @@
+.detail-content-wrapper {
+  width: 50vw;
+}
+.detail-content-wrapper .form-content-wrapper {
+  line-height: 28px;
+  display: inline-block;
+}
+.detail-content-wrapper .form-item-wrapper {
+  margin-bottom: 0px !important;
+}
+.detail-content-wrapper .table-pagination-wrapper {
+  margin-top: 12px;
+  float: right;
+}

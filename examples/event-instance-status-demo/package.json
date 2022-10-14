@@ -1,0 +1,13 @@
+{
+  "name": "event-instance-status-demo",
+  "private": true,
+  "scripts": {
+    "dev": "dw-openplatform-script dev --backendOnly",
+    "build": "dw-openplatform-script build --preview --backendOnly",
+    "clean": "dw-openplatform-script clean"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "dw-openplatform-script": "workspace:*"
+  }
+}
