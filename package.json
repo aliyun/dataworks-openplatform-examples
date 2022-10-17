@@ -7,10 +7,12 @@
     "example:meta-api": "npm run inject && cd ./examples/meta-api-demo && npm run dev",
     "example:event-instance-status": "npm run inject && cd ./examples/event-instance-status-demo && npm run dev",
     "example:extension-maxpt": "npm run inject && cd ./examples/extension-maxpt-demo && npm run dev",
+    "example:extension-deploy-control": "npm run inject && cd ./examples/extension-deploy-control-demo && npm run dev",
     "build:workbench-screen": "npm run inject && cd ./examples/workbench-screen-demo && npm run build",
     "build:meta-api": "npm run inject && cd ./examples/meta-api-demo && npm run build",
     "build:event-instance-status": "npm run inject && cd ./examples/event-instance-status-demo && npm run build",
-    "build:extension-maxpt": "npm run inject && cd ./examples/extension-maxpt-demo && npm run build"
+    "build:extension-maxpt": "npm run inject && cd ./examples/extension-maxpt-demo && npm run build",
+    "build:extension-deploy-control": "npm run inject && cd ./examples/extension-deploy-control-demo && npm run build"
   },
   "engines": {
     "node": ">=16.16.0",

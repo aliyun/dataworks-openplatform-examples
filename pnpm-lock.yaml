@@ -19,6 +19,12 @@ importers:
     devDependencies:
       dw-openplatform-script: link:../script
 
+  examples/extension-deploy-control-demo:
+    specifiers:
+      dw-openplatform-script: workspace:*
+    devDependencies:
+      dw-openplatform-script: link:../script
+
   examples/extension-maxpt-demo:
     specifiers:
       dw-openplatform-script: workspace:*
