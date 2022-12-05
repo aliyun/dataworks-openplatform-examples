@@ -99,6 +99,7 @@ importers:
       '@types/react-dom': '*'
       '@vitejs/plugin-react': 2.2.0
       classnames: '*'
+      colors: 1.4.0
       moment: '*'
       monaco-editor: 0.34.1
       react: '*'
@@ -111,6 +112,7 @@ importers:
     dependencies:
       '@alifd/next': 1.25.51_jb42yyeu5qxbfieyxjks6malva
       classnames: 2.3.1
+      colors: 1.4.0
       moment: 2.29.4
       monaco-editor: 0.34.1
       react: 18.2.0
@@ -1125,6 +1127,11 @@ packages:
     dependencies:
       color-convert: 1.9.3
       color-string: 1.9.1
+    dev: false
+
+  /colors/1.4.0:
+    resolution: {integrity: sha512-a+UqTh4kgZg/SlGvfbzDHpgRu7AAQOmmqRHJnxhRZICKFUT91brVhNNt58CMWU9PsBbv3PDCZUHbVxuDiH2mtA==}
+    engines: {node: '>=0.1.90'}
     dev: false
 
   /commander/9.4.0:
