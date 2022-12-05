@@ -1,0 +1,28 @@
+{
+  "name": "frontend-demo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build"
+  },
+  "dependencies": {
+    "@alifd/next": "*",
+    "classnames": "*",
+    "colors": "^1.4.0",
+    "moment": "*",
+    "monaco-editor": "0.34.1",
+    "react": "*",
+    "react-dom": "*",
+    "vite-plugin-monaco-editor": "^1.1.0",
+    "xterm": "5.0.0",
+    "xterm-addon-fit": "^0.6.0"
+  },
+  "devDependencies": {
+    "@types/react": "*",
+    "@types/react-dom": "*",
+    "@vitejs/plugin-react": "*",
+    "typescript": "*",
+    "vite": "*"
+  }
+}
