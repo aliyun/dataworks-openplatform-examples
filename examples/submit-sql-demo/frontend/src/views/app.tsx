@@ -77,6 +77,7 @@ async function commandHandler(term: NextTerminal, dataSource: any, workspace?: n
     term.write(highlight.text('[ERROR] You should select workspace first.\r\n$ ', brush));
     return;
   }
+  // 这里简单的处理了下输入的命令行解析，如果命令开头为dw，且执行命令为run就继续往下处理，否则报错
   const words = input?.split(' ');
   const tag = words?.[0].toLowerCase();
   const command = words?.[1]?.toLowerCase();
@@ -85,13 +86,15 @@ async function commandHandler(term: NextTerminal, dataSource: any, workspace?: n
     term.write(highlight.text('[ERROR] Invalid command.\r\n$ ', brush));
     return;
   }
+  // 获取输入文件
   const source = dataSource?.[0]?.children.find((i: any) => i.label === fileName);
   const file = await services.ide.getFile(workspace, source.key);
   if (!file) {
     term.write(highlight.text('[ERROR] File name does not exist.\r\n$ ', brush));
     return;
   }
-  term.write(highlight.text('[INFO] Submiting file.\r\n$ ', brush));
+  term.write(highlight.text('[INFO] Submiting file.\r\n$ ', brush));\
+  // 调用部属文件接口，将文件发布到调度系统中
   const response = await services.ide.deployFile(workspace, source.key);
   if (response) {
     term.write(highlight.text('[INFO] Submit file success.\r\n$ ', brush));
@@ -99,6 +102,7 @@ async function commandHandler(term: NextTerminal, dataSource: any, workspace?: n
     term.write(highlight.text('[ERROR] Submit file failed.\r\n$ ', brush));
     return;
   }
+  // 执行冒烟测试，运行调度任务
   let dag: services.ide.Dag;
   try {
     term.write(highlight.text('[INFO] Start to run task.\r\n$ ', brush));
@@ -108,6 +112,7 @@ async function commandHandler(term: NextTerminal, dataSource: any, workspace?: n
     term.write(highlight.text('[ERROR] Trigger sql task failed.\r\n$ ', brush));
     return;
   }
+  // 轮询获取任务日志
   const event = setInterval(async () => {
     try {
       const logInfo = await services.ide.getLog(dag.instanceId, 'DEV');
@@ -131,6 +136,13 @@ async function commandHandler(term: NextTerminal, dataSource: any, workspace?: n
     }
   }, 3000);
 }
+/**
+ * 处理Terminal键盘事件
+ * @param e 事件对象
+ * @param term terminal实例
+ * @param dataSource 目录树数据源
+ * @param workspace 工作空间id
+ */
 function onTerminalKeyChange(e: { key: string; domEvent: KeyboardEvent; }, term: NextTerminal, dataSource: any, workspace?: number) {
   const ev = e.domEvent;
   const printable = !ev.altKey && !ev.ctrlKey && !ev.metaKey;
@@ -168,6 +180,9 @@ function onTerminalKeyChange(e: { key: string; domEvent: KeyboardEvent; }, term:
       }
   }
 }
+/**
+ * 获取工作空间列表
+ */
 async function getWorkspaceList() {
   const response = await services.tenant.getProjectList();
   const list = response.projectList.filter(i => i.projectStatusCode === 'AVAILABLE').map(i => (
@@ -175,6 +190,11 @@ async function getWorkspaceList() {
   ));
   return list;
 }
+/**
+ * 获取目录树数据源
+ * @param workspace 工作空间id
+ * @param dataSource 工作空间列表
+ */
 async function getTreeDataSource(workspace: number, dataSource: { label: string, value: number }[]) {
   try {
     const businesses = await services.ide.getBusinessList(workspace, openPlatformBusinessName);
@@ -204,10 +224,21 @@ async function getTreeDataSource(workspace: number, dataSource: { label: string,
   }
   return [{ key: 1, label: openPlatformBusinessName, children }];
 }
+/**
+ * 获取文件详细信息
+ * @param workspace 工作空间id
+ * @param fileId 文件id
+ */
 async function getFileInfo(workspace: number, fileId: number) {
   const response = await services.ide.getFile(workspace, fileId);
   return response;
 }
+/**
+ * 保存文件，当Ctrl+S时触发
+ * @param workspace 工作空间id
+ * @param editor 编辑器实例
+ * @param selectedFile 已选择的文件
+ */
 async function saveFile(workspace: number, editor: monaco.editor.IStandaloneCodeEditor, selectedFile?: number) {
   if (!selectedFile) {
     showTips('Please select a file.');
@@ -229,6 +260,7 @@ const App: FunctionComponent<Props> = () => {
   const [dataSource, setDataSource] = useState<any[]>();
   const [selectedFile, setSelectedFile] = useState<number>();
   const [loading, setLoading] = useState<boolean>(false);
+  // 创建编辑器实例
   useEffect(() => {
     if (editorRef.current) {
       const nextEditor = monaco.editor.create(editorRef.current, editorOptions);
@@ -236,6 +268,7 @@ const App: FunctionComponent<Props> = () => {
       return () => { nextEditor.dispose(); };
     }
   }, [editorRef.current]);
+  // 添加保存文件按键事件
   useEffect(() => {
     editor?.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS, () => {
       if (!workspace) {
@@ -245,6 +278,7 @@ const App: FunctionComponent<Props> = () => {
       saveFile(workspace, editor, selectedFile);
     });
   }, [editor, workspace, selectedFile]);
+  // 创建terminal实例
   useEffect(() => {
     if (termianlRef.current) {
       const term: NextTerminal = new Terminal(terminalOptions) as any;
@@ -259,12 +293,14 @@ const App: FunctionComponent<Props> = () => {
       return () => { term.dispose(); };
     }
   }, [termianlRef.current]);
+  // 注册terminal输入事件
   useEffect(() => {
     const event = terminal?.onKey(e => onTerminalKeyChange(e, terminal, dataSource, workspace));
     return () => {
       event?.dispose();
     };
   }, [terminal, dataSource, workspace]);
+  // 获取目录树数据源
   useEffect(() => {
     workspace && (async () => {
       setLoading(true);
@@ -275,6 +311,7 @@ const App: FunctionComponent<Props> = () => {
       setLoading(false);
     })();
   }, [workspace]);
+  // 当目录树文件被点击时，获取文件详情并展示代码
   useEffect(() => {
     workspace && selectedFile && (async () => {
       setLoading(true);
@@ -284,6 +321,7 @@ const App: FunctionComponent<Props> = () => {
       setLoading(false);
     })();
   }, [selectedFile]);
+  // 获取工作空间列表
   useEffect(() => {
     (async () => {
       const list = await getWorkspaceList();
