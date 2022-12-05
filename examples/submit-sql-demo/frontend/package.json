@@ -9,7 +9,7 @@
   "dependencies": {
     "@alifd/next": "*",
     "classnames": "*",
-    "colors": "^1.4.0",
+    "colors": "1.4.0",
     "moment": "*",
     "monaco-editor": "0.34.1",
     "react": "*",
