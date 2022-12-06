@@ -93,7 +93,7 @@ async function commandHandler(term: NextTerminal, dataSource: any, workspace?: n
     term.write(highlight.text('[ERROR] File name does not exist.\r\n$ ', brush));
     return;
   }
-  term.write(highlight.text('[INFO] Submiting file.\r\n$ ', brush));\
+  term.write(highlight.text('[INFO] Submiting file.\r\n$ ', brush));
   // 调用部属文件接口，将文件发布到调度系统中
   const response = await services.ide.deployFile(workspace, source.key);
   if (response) {

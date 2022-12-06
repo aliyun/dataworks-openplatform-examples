@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "inject": "node ./scripts/index.js",
+    "example:ide": "npm run inject && cd ./examples/submit-sql-demo && npm run dev",
     "example:workbench-screen": "npm run inject && cd ./examples/workbench-screen-demo && npm run dev",
     "example:meta-api": "npm run inject && cd ./examples/meta-api-demo && npm run dev",
     "example:event-instance-status": "npm run inject && cd ./examples/event-instance-status-demo && npm run dev",

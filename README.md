@@ -9,6 +9,7 @@ DataWorks开放平台是DataWorks对外提供数据和能力的开放通道。Da
 * [最佳实践：订阅实例状态变更消息](examples/event-instance-status-demo/README.md)
 * [最佳实践：禁止使用MAX_PT函数](examples/extension-maxpt-demo/README.md)
 * [最佳实践：任务发布封网管控](examples/extension-deploy-control-demo/README.md)
+* [最佳实践：数据开发、提交与运行](examples/submit-sql-demo/README.md)
 
 # 工程初始化
 

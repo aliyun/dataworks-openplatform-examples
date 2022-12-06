@@ -1,8 +1,8 @@
-# 运维大屏搭建示例
+# 数据开发、提交与运行示例
 
-DataWorks 提供了丰富的 OpenAPI，您可以根据需要使用 DataWorks 的 OpenAPI 等开放能力实现各种业务场景。本文以使用运维中心的 OpenAPI 与 OpenEvent 为例，为您示例如何搭建运维大屏。
+DataWorks 提供了丰富的 OpenAPI，您可以根据需要使用 DataWorks 的 OpenAPI 等开放能力实现各种业务场景。本文以数据开发为例，为您示例如何使用OpenAPI快速进行数据开发、提交与运行。
 
-具体操作流程可参考文章：[链接](https://openplatform.data.aliyun.com/playground/case?id=workbench)
+具体操作流程可参考文章：[链接](https://openplatform.data.aliyun.com/playground/case?id=ide)
 
 ## 如何开始
 
@@ -10,5 +10,5 @@ DataWorks 提供了丰富的 OpenAPI，您可以根据需要使用 DataWorks 的
 2. 在根目录输入以下指令：
 
 ```shell
-npm run example:workbench-screen
+npm run example:ide
 ```
