@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "inject": "node ./scripts/index.js",
+    "example:ide": "npm run inject && cd ./examples/submit-sql-demo && npm run dev",
     "example:workbench-screen": "npm run inject && cd ./examples/workbench-screen-demo && npm run dev",
     "example:meta-api": "npm run inject && cd ./examples/meta-api-demo && npm run dev",
     "example:event-instance-status": "npm run inject && cd ./examples/event-instance-status-demo && npm run dev",
@@ -21,8 +22,9 @@
   "packageManager": "pnpm@7.1.2",
   "resolutions": {
     "@alifd/next": "1.25.51",
+    "@vitejs/plugin-react": "2.2.0",
     "typescript": "^4.6.4",
-    "vite": "^3.0.0"
+    "vite": "3.0.0"
   },
   "dependencies": {
     "glob": "^8.0.3"
